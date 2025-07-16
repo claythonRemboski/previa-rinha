@@ -5,3 +5,4 @@ Dockerfile
 .idea
 README.md
 scripts
+Makefile
