@@ -1,3 +1,13 @@
+# Possiveis futuros pontos de gargalo:
+- nginx
+- excesso de arquivos no laravel sendo carregados no container (da pra deixar o container mais leve?)
+
+
+
+
+
+
+
 # Laravel Model
 
 Este é um modelo para projetos em Laravel que visa facilitar o desenvolvimento, utilizando containers docker como utilitários.
