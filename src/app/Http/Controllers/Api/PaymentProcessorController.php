@@ -4,15 +4,20 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\PaymentProcessorService;
 
-class PaymentProcessor extends Controller
+class PaymentProcessorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public $paymentProcessorService;
+
+    public function __construct(PaymentProcessorService $paymentProcessorService)
+    {
+        $this->paymentProcessorService = $paymentProcessorService;
+    }
+
     public function index()
     {
-        //
+        //teste
     }
 
     /**
@@ -20,7 +25,9 @@ class PaymentProcessor extends Controller
      */
     public function save(Request $request)
     {
-        return response()->json(['status' => 'ok']);
+        $response = $this->paymentProcessorService->processPayment();
+        
+        return $response;
     }
 
     /**

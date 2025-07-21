@@ -16,9 +16,19 @@ api-controller:
 install-api:
 	$(run_artisan) install:api ## Executa comando install:api
 
+clear:
+	docker compose run --rm artisan config:clear && \
+	docker compose run --rm artisan cache:clear && \
+	docker compose run --rm artisan route:clear && \
+	docker compose run --rm artisan view:clear
+
+
 collection:
 	$(ask) "Nome da Resource Collection: " collection_name; \
 	$(run_artisan) make:resource $$collection_name --collection ## Cria resource collection
+
+composer-install:
+	docker compose run --rm composer install
 
 command:
 	$(ask) "Nome do Command: " command_name; \
@@ -28,8 +38,8 @@ controller:
 	$(ask) "Nome do Controller: " controller_name; \
 	$(run_artisan) make:controller $$controller_name ## Cria um controller padrão
 
-server-up:
-	docker compose up -d server ## Sobe containers necessários
+dump-autoload:
+	docker compose run --rm composer dump-autoload
 
 factory:
 	$(ask) "Nome da Factory: " factory_name; \
@@ -76,7 +86,7 @@ seed:
 	$(run_artisan) db:seed ## Executa os seeders
 
 server-up:
-	docker compose up -d --build server ## Sobe os containers com build
+	docker compose up -d --build nginx ## Sobe os containers com build
 
 service:
 	$(ask) "Nome do Service (sem extensão php): " service_name; \
@@ -89,3 +99,7 @@ service:
 telescope:
 	docker compose run --rm composer require laravel/telescope --dev; \
 	$(run_artisan) telescope:install ## Instala Laravel Telescope
+
+tinker:
+	docker compose run --rm artisan tinker
+

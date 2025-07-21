@@ -27,7 +27,7 @@ services:
           cpus: "0.4"
           memory: "15MB"
 
-  app1: &app
+  app1:
     build:
       context: .
       dockerfile: dockerfiles/php.dockerfile
@@ -51,9 +51,27 @@ services:
           memory: "60MB"
 
   app2:
-    <<: *app
+    build:
+      context: .
+      dockerfile: dockerfiles/php.dockerfile
     container_name: laravel-app2
     hostname: app2
+    volumes:
+      - ./src:/var/www/html:delegated
+    networks:
+      - laravel-network
+      - payment-processor
+    environment:
+      - REDIS_ADDRESS=redis:6379
+      - PAYMENT_PROCESSOR_URL_DEFAULT=http://payment-processor-default:8080
+      - PAYMENT_PROCESSOR_URL_FALLBACK=http://payment-processor-fallback:8080
+    depends_on:
+      - redis
+    deploy:
+      resources:
+        limits:
+          cpus: "0.6"
+          memory: "60MB"
   redis:
     image: redis:7-alpine
     container_name: laravel-redis
