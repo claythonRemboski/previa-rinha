@@ -1,11 +1,8 @@
-# Possiveis futuros pontos de gargalo:
+# Possiveis futuros pontos de gargalo/melhorias futuras:
 - nginx
 - excesso de arquivos no laravel sendo carregados no container (da pra deixar o container mais leve?)
-
-
-
-
-
+- utilizar o runtime swoole para o php
+- trocar o redis por outro mais leve (Dragonfly, Memcache)
 
 
 # Laravel Model
