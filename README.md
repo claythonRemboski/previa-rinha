@@ -3,6 +3,7 @@
 - excesso de arquivos no laravel sendo carregados no container (da pra deixar o container mais leve?)
 - utilizar o runtime swoole para o php
 - trocar o redis por outro mais leve (Dragonfly, Memcache)
+- imagens otimizadas do docker
 
 
 # Laravel Model
@@ -36,3 +37,5 @@ Para saber quais outros comandos estão disponíveis, basta digitar `make + TAB(
 Os containeres artisan e composer do docker-compose funcionam do seguinte modo: ao digitar os comandos listados no arquivo make, o container relativo é executado, faz o que foi indicado e em seguida é removido.
 
 
+## Comando para status:
+docker stats laravel-app1 laravel-app2 laravel-redis laravel-nginx 

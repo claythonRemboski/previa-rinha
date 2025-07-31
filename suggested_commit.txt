@@ -1,0 +1,13 @@
+Melhorias de desempenho e configuração
+Ajustes em Docker, recursos e rotas de API.
+README.md: Adição de item sobre imagens otimizadas no 
+Docker e comando `docker stats ...` para monitoramento.
+docker-compose.yaml: Ajustes de recursos (CPU e memória) 
+dos containers e alteração da porta do Nginx de 9000 
+para 9999.
+src/app/Http/Controllers/Api/PaymentProcessorController.php:
+Adição de log de requisição e retorno JSON genérico 
+('ok') para depuração; código de processamento de 
+pagamento comentado.
+src/routes/api.php: Correção do nome da classe na rota 
+`/payment-processor` para `PaymentProcessorController`.

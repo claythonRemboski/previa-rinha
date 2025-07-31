@@ -25,9 +25,13 @@ class PaymentProcessorController extends Controller
      */
     public function save(Request $request)
     {
-        $response = $this->paymentProcessorService->processPayment();
-        
-        return $response;
+        info($request);
+
+        return response()->json(['message' => 'ok'], 200);
+
+        // $response = $this->paymentProcessorService->processPayment();
+
+        // return $response;
     }
 
     /**
